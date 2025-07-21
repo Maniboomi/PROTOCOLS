@@ -1,0 +1,287 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/07/2025  15:27:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\TRAFFIC_LIGHT.obj TO .\Objects\TRAFFIC_LIGHT PRINT (.\Listi
+>> ngs\TRAFFIC_LIGHT.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\TRAFFIC_LIGHT.obj (TRAFFIC_LIGHT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\TRAFFIC_LIGHT (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     003CH     UNIT         ?PR?_DELAY_US?TRAFFIC_LIGHT
+            CODE    083CH     0023H     UNIT         ?PR?SOUTH?TRAFFIC_LIGHT
+            CODE    085FH     0023H     UNIT         ?PR?NORTH?TRAFFIC_LIGHT
+            CODE    0882H     0023H     UNIT         ?PR?EAST?TRAFFIC_LIGHT
+            CODE    08A5H     0023H     UNIT         ?PR?WEST?TRAFFIC_LIGHT
+            CODE    08C8H     0016H     UNIT         ?C?LIB_CODE
+            CODE    08DEH     000FH     UNIT         ?PR?MAIN?TRAFFIC_LIGHT
+            CODE    08EDH     000CH     UNIT         ?C_C51STARTUP
+            CODE    08F9H     0009H     UNIT         ?PR?TRAF_INIT?TRAFFIC_LIGHT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\TRAFFIC_LIGHT (?C_STARTUP)
+
+
+SEGMENT                               DATA_GROUP 
+  +--> CALLED SEGMENT               START    LENGTH
+---------------------------------------------------
+?C_C51STARTUP                       -----    -----
+  +--> ?PR?MAIN?TRAFFIC_LIGHT
+
+?PR?MAIN?TRAFFIC_LIGHT              -----    -----
+  +--> ?PR?TRAF_INIT?TRAFFIC_LIGHT
+  +--> ?PR?SOUTH?TRAFFIC_LIGHT
+  +--> ?PR?NORTH?TRAFFIC_LIGHT
+  +--> ?PR?EAST?TRAFFIC_LIGHT
+  +--> ?PR?WEST?TRAFFIC_LIGHT
+
+?PR?SOUTH?TRAFFIC_LIGHT             -----    -----
+  +--> ?PR?_DELAY_US?TRAFFIC_LIGHT
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/07/2025  15:27:08  PAGE 2
+
+
+
+?PR?_DELAY_US?TRAFFIC_LIGHT         0008H    0004H
+
+?PR?NORTH?TRAFFIC_LIGHT             -----    -----
+  +--> ?PR?_DELAY_US?TRAFFIC_LIGHT
+
+?PR?EAST?TRAFFIC_LIGHT              -----    -----
+  +--> ?PR?_DELAY_US?TRAFFIC_LIGHT
+
+?PR?WEST?TRAFFIC_LIGHT              -----    -----
+  +--> ?PR?_DELAY_US?TRAFFIC_LIGHT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\TRAFFIC_LIGHT (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:08EDH         SEGMENT       ?C_C51STARTUP
+  I:000CH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08F0H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08EDH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08EDH         LINE#         133
+  C:08EFH         LINE#         134
+  C:08F0H         LINE#         135
+  C:08F1H         LINE#         136
+  C:08F3H         LINE#         185
+  C:08F6H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        TRAFFIC_LIGHT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/07/2025  15:27:08  PAGE 3
+
+
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:0090H.4       PUBLIC        NORTH
+  B:0080H.4       PUBLIC        SOUTH
+  B:00A0H.0       PUBLIC        ERED
+  B:00A0H.1       PUBLIC        EYELLOW
+  C:08DEH         PUBLIC        main
+  B:0090H.0       PUBLIC        NRED
+  B:0090H.1       PUBLIC        NYELLOW
+  C:085FH         PUBLIC        north
+  B:00A0H.4       PUBLIC        EAST
+  C:0882H         PUBLIC        east
+  B:0080H.0       PUBLIC        SRED
+  B:0080H.1       PUBLIC        SYELLOW
+  B:00B0H.0       PUBLIC        WRED
+  C:083CH         PUBLIC        south
+  B:00B0H.1       PUBLIC        WYELLOW
+  B:00A0H.2       PUBLIC        EGREEN
+  B:0090H.2       PUBLIC        NGREEN
+  B:00B0H.4       PUBLIC        WEST
+  C:08A5H         PUBLIC        west
+  B:00A0H.3       PUBLIC        ERIGHT
+  C:08F9H         PUBLIC        traf_init
+  B:0080H.2       PUBLIC        SGREEN
+  B:00B0H.2       PUBLIC        WGREEN
+  B:0090H.3       PUBLIC        NRIGHT
+  B:0080H.3       PUBLIC        SRIGHT
+  B:00B0H.3       PUBLIC        WRIGHT
+  C:0804H         PUBLIC        _delay_us
+  -------         PROC          TRAF_INIT
+  C:08F9H         LINE#         23
+  C:08F9H         LINE#         24
+  C:08F9H         LINE#         25
+  C:08FBH         LINE#         26
+  C:08FDH         LINE#         27
+  C:08FFH         LINE#         28
+  C:0901H         LINE#         29
+  -------         ENDPROC       TRAF_INIT
+  C:0800H         SYMBOL        L?0020
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  C:0800H         SYMBOL        L?0020
+  -------         PROC          _DELAY_US
+  D:0008H         SYMBOL        ms
+  -------         DO            
+  D:000AH         SYMBOL        i
+  D:0082H         SYMBOL        j
+  -------         ENDDO         
+  C:0804H         LINE#         30
+  C:0808H         LINE#         31
+  C:0808H         LINE#         33
+  C:0818H         LINE#         34
+  C:0818H         LINE#         35
+  C:0831H         LINE#         36
+  C:083BH         LINE#         37
+  -------         ENDPROC       _DELAY_US
+  -------         PROC          SOUTH
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/07/2025  15:27:08  PAGE 4
+
+
+  C:083CH         LINE#         38
+  C:083CH         LINE#         39
+  C:083CH         LINE#         40
+  C:083EH         LINE#         41
+  C:0841H         LINE#         42
+  C:0841H         LINE#         43
+  C:0843H         LINE#         44
+  C:0846H         LINE#         45
+  C:0848H         LINE#         46
+  C:084AH         LINE#         47
+  C:0851H         LINE#         48
+  C:0853H         LINE#         49
+  C:0855H         LINE#         50
+  C:0857H         LINE#         51
+  C:085AH         LINE#         52
+  C:085CH         LINE#         53
+  C:085CH         LINE#         54
+  C:085EH         LINE#         55
+  -------         ENDPROC       SOUTH
+  -------         PROC          NORTH
+  C:085FH         LINE#         56
+  C:085FH         LINE#         57
+  C:085FH         LINE#         58
+  C:0861H         LINE#         59
+  C:0864H         LINE#         60
+  C:0864H         LINE#         61
+  C:0866H         LINE#         62
+  C:0869H         LINE#         63
+  C:086BH         LINE#         64
+  C:086DH         LINE#         65
+  C:0874H         LINE#         66
+  C:0876H         LINE#         67
+  C:0878H         LINE#         68
+  C:087AH         LINE#         69
+  C:087DH         LINE#         70
+  C:087FH         LINE#         71
+  C:087FH         LINE#         72
+  C:0881H         LINE#         73
+  -------         ENDPROC       NORTH
+  -------         PROC          EAST
+  C:0882H         LINE#         74
+  C:0882H         LINE#         75
+  C:0882H         LINE#         76
+  C:0884H         LINE#         77
+  C:0887H         LINE#         78
+  C:0887H         LINE#         79
+  C:0889H         LINE#         80
+  C:088CH         LINE#         81
+  C:088EH         LINE#         82
+  C:0890H         LINE#         83
+  C:0897H         LINE#         84
+  C:0899H         LINE#         85
+  C:089BH         LINE#         86
+  C:089DH         LINE#         87
+  C:08A0H         LINE#         88
+  C:08A2H         LINE#         89
+  C:08A2H         LINE#         90
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/07/2025  15:27:08  PAGE 5
+
+
+  C:08A4H         LINE#         91
+  -------         ENDPROC       EAST
+  -------         PROC          WEST
+  C:08A5H         LINE#         92
+  C:08A5H         LINE#         93
+  C:08A5H         LINE#         94
+  C:08A7H         LINE#         95
+  C:08AAH         LINE#         96
+  C:08AAH         LINE#         97
+  C:08ACH         LINE#         98
+  C:08AFH         LINE#         99
+  C:08B1H         LINE#         100
+  C:08B3H         LINE#         101
+  C:08BAH         LINE#         102
+  C:08BCH         LINE#         103
+  C:08BEH         LINE#         104
+  C:08C0H         LINE#         105
+  C:08C3H         LINE#         106
+  C:08C5H         LINE#         107
+  C:08C5H         LINE#         108
+  C:08C7H         LINE#         109
+  -------         ENDPROC       WEST
+  -------         PROC          MAIN
+  C:08DEH         LINE#         110
+  C:08DEH         LINE#         111
+  C:08DEH         LINE#         112
+  C:08E1H         LINE#         113
+  C:08E4H         LINE#         114
+  C:08E7H         LINE#         115
+  C:08EAH         LINE#         116
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TRAFFIC_LIGHT
+
+  -------         MODULE        ?C?SLCMP
+  C:08C8H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EFH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=13.0 xdata=0 code=261
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

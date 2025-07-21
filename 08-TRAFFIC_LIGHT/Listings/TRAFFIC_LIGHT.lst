@@ -1,0 +1,148 @@
+C51 COMPILER V9.60.7.0   TRAFFIC_LIGHT                                                     07/07/2025 15:27:08 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TRAFFIC_LIGHT
+OBJECT MODULE PLACED IN .\Objects\TRAFFIC_LIGHT.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE TRAFFIC_LIGHT.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\TRAFFIC_LIGHT.lst) TABS(2) OBJECT(.\Objects\TRAFFIC_LIGHT.obj)
+
+line level    source
+
+   1          #include<stdio.h>
+   2          #include<reg51.h>
+   3          sbit SRED = P0^0;
+   4          sbit SYELLOW = P0^1;
+   5          sbit SGREEN = P0^2;
+   6          sbit SRIGHT = P0^3;
+   7          sbit SOUTH = P0^4;
+   8          sbit NRED = P1^0;
+   9          sbit NYELLOW = P1^1;
+  10          sbit NGREEN = P1^2;
+  11          sbit NRIGHT = P1^3;
+  12          sbit NORTH = P1^4;
+  13          sbit ERED = P2^0;
+  14          sbit EYELLOW = P2^1;
+  15          sbit EGREEN = P2^2;
+  16          sbit ERIGHT = P2^3;
+  17          sbit EAST = P2^4;
+  18          sbit WRED = P3^0;
+  19          sbit WYELLOW = P3^1;
+  20          sbit WGREEN = P3^2;
+  21          sbit WRIGHT = P3^3;
+  22          sbit WEST = P3^4;
+  23          void traf_init(void)
+  24          {
+  25   1        SOUTH = 0;
+  26   1        NORTH = 0;
+  27   1        EAST = 0;
+  28   1        WEST = 0;
+  29   1      }
+  30          void delay_us(unsigned int ms)
+  31          {
+  32   1        unsigned int i,j;
+  33   1        for(i=0;i<ms;i++)
+  34   1        {
+  35   2          for(j=0;j<65535;j++);
+  36   2        }
+  37   1      }
+  38          void south(void)
+  39          {
+  40   1        SOUTH = 1;
+  41   1        if(SOUTH == 1)
+  42   1        {
+  43   2          SRED = 1;
+  44   2          delay_us(70);
+  45   2          SRED = 0;
+  46   2          SYELLOW = 1;
+  47   2          delay_us(28);
+  48   2          SYELLOW = 0;
+  49   2          SGREEN = 1;
+  50   2          SRIGHT = 1;
+  51   2          delay_us(70);
+  52   2          SGREEN = 0;
+  53   2        }
+  54   1        SOUTH = 0;
+C51 COMPILER V9.60.7.0   TRAFFIC_LIGHT                                                     07/07/2025 15:27:08 PAGE 2   
+
+  55   1      }
+  56          void north(void)
+  57          {
+  58   1        NORTH = 1;
+  59   1        if(NORTH == 1)
+  60   1        {
+  61   2          NRED = 1;
+  62   2          delay_us(70);
+  63   2          NRED = 0;
+  64   2          NYELLOW = 1;
+  65   2          delay_us(28);
+  66   2          NYELLOW = 0;
+  67   2          NGREEN = 1;
+  68   2          NRIGHT = 1;
+  69   2          delay_us(70);
+  70   2          NGREEN = 0;
+  71   2        }
+  72   1        NORTH = 0;
+  73   1      }
+  74          void east(void)
+  75          {
+  76   1        EAST = 1;
+  77   1        if(EAST == 1)
+  78   1        {
+  79   2          ERED = 1;
+  80   2          delay_us(70);
+  81   2          ERED = 0;
+  82   2          EYELLOW = 1;
+  83   2          delay_us(28);
+  84   2          EYELLOW = 0;
+  85   2          EGREEN = 1;
+  86   2          ERIGHT = 1;
+  87   2          delay_us(70);
+  88   2          EGREEN = 0;
+  89   2        }
+  90   1        EAST = 0;
+  91   1      }
+  92          void west(void)
+  93          {
+  94   1        WEST = 1;
+  95   1        if(WEST == 1)
+  96   1        {
+  97   2          WRED = 1;
+  98   2          delay_us(70);
+  99   2          WRED = 0;
+ 100   2          WYELLOW = 1;
+ 101   2          delay_us(28);
+ 102   2          WYELLOW = 0;
+ 103   2          WGREEN = 1;
+ 104   2          WRIGHT = 1;
+ 105   2          delay_us(70);
+ 106   2          WGREEN = 0;
+ 107   2        }
+ 108   1        WEST = 0;
+ 109   1      }
+ 110          void main(void)
+ 111          {
+ 112   1        traf_init();
+ 113   1        south();
+ 114   1        north();
+ 115   1        east();
+ 116   1        west();
+C51 COMPILER V9.60.7.0   TRAFFIC_LIGHT                                                     07/07/2025 15:27:08 PAGE 3   
+
+ 117   1      }
+ 118            
+ 119            
+ 120          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    224    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
