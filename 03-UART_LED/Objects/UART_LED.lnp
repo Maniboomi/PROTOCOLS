@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\UART_LED.obj" 
+TO ".\Objects\UART_LED" 
+PRINT(".\Listings\UART_LED.m51") RAMSIZE(256) 
