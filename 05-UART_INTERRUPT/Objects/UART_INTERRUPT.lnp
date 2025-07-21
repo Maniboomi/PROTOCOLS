@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\UART_INTERRUPT.obj" 
+TO ".\Objects\UART_INTERRUPT" 
+PRINT(".\Listings\UART_INTERRUPT.m51") RAMSIZE(256) 
