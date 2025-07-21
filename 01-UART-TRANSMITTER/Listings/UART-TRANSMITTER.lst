@@ -1,0 +1,61 @@
+C51 COMPILER V9.60.7.0   UART_TRANSMITTER                                                  06/26/2025 13:38:36 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE UART_TRANSMITTER
+OBJECT MODULE PLACED IN .\Objects\UART-TRANSMITTER.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE UART-TRANSMITTER.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\UART-TRANSMITTER.lst) TABS(2) OBJECT(.\Objects\UART-TRANSMITTER.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          void uart_control(void);
+   4          void uart_trans(char ch);
+   5          void delay();
+   6          void uart_control(void)
+   7          {
+   8   1        SCON = 0x50;
+   9   1        TMOD = 0x20;
+  10   1        TH1 = 0xFD;
+  11   1        TL1 = 0xFD;
+  12   1        TR1 = 1;
+  13   1        PCON = 0x80;
+  14   1      }
+  15          void uart_trans(char ch)
+  16          {
+  17   1        char c;
+  18   1        SBUF = ch;
+  19   1        while(TI == 0);
+  20   1          TI = 0;
+  21   1        c = SBUF;
+  22   1        P1 = ch;
+  23   1        delay();
+  24   1        P1 = 0x00;
+  25   1        delay();
+  26   1      }
+  27          
+  28          void delay(){
+  29   1        int i;
+  30   1      for(i=0;i<50000;i++);
+  31   1      }
+  32          void main(void)
+  33          {
+  34   1        uart_control();
+  35   1        uart_trans('X');
+  36   1      }
+  37              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     77    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

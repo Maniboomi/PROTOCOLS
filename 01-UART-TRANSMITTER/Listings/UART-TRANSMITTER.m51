@@ -1,0 +1,171 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/26/2025  13:38:36  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\UART-TRANSMITTER.obj TO .\Objects\UART-TRANSMITTER PRINT (.
+>> \Listings\UART-TRANSMITTER.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\UART-TRANSMITTER.obj (UART_TRANSMITTER)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\UART-TRANSMITTER (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     001EH     UNIT         ?PR?DELAY?UART_TRANSMITTER
+            CODE    081EH     0016H     UNIT         ?C?LIB_CODE
+            CODE    0834H     0015H     UNIT         ?PR?_UART_TRANS?UART_TRANSMITTER
+            CODE    0849H     0012H     UNIT         ?PR?UART_CONTROL?UART_TRANSMITTER
+            CODE    085BH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0867H     0008H     UNIT         ?PR?MAIN?UART_TRANSMITTER
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\UART-TRANSMITTER (?C_STARTUP)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?UART_TRANSMITTER
+
+?PR?MAIN?UART_TRANSMITTER                 -----    -----
+  +--> ?PR?UART_CONTROL?UART_TRANSMITTER
+  +--> ?PR?_UART_TRANS?UART_TRANSMITTER
+
+?PR?_UART_TRANS?UART_TRANSMITTER          0008H    0001H
+  +--> ?PR?DELAY?UART_TRANSMITTER
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\UART-TRANSMITTER (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/26/2025  13:38:36  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:085BH         SEGMENT       ?C_C51STARTUP
+  I:0009H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:085EH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:085BH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:085BH         LINE#         133
+  C:085DH         LINE#         134
+  C:085EH         LINE#         135
+  C:085FH         LINE#         136
+  C:0861H         LINE#         185
+  C:0864H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        UART_TRANSMITTER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0800H         PUBLIC        delay
+  B:0098H.1       PUBLIC        TI
+  C:0849H         PUBLIC        uart_control
+  C:0867H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  C:0834H         PUBLIC        _uart_trans
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  -------         PROC          UART_CONTROL
+  C:0849H         LINE#         6
+  C:0849H         LINE#         7
+  C:0849H         LINE#         8
+  C:084CH         LINE#         9
+  C:084FH         LINE#         10
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/26/2025  13:38:36  PAGE 3
+
+
+  C:0852H         LINE#         11
+  C:0855H         LINE#         12
+  C:0857H         LINE#         13
+  C:085AH         LINE#         14
+  -------         ENDPROC       UART_CONTROL
+  -------         PROC          _UART_TRANS
+  D:0007H         SYMBOL        ch
+  -------         DO            
+  D:0008H         SYMBOL        c
+  -------         ENDDO         
+  C:0834H         LINE#         15
+  C:0834H         LINE#         16
+  C:0834H         LINE#         18
+  C:0836H         LINE#         19
+  C:0839H         LINE#         20
+  C:083BH         LINE#         21
+  C:083EH         LINE#         22
+  C:0840H         LINE#         23
+  C:0843H         LINE#         24
+  C:0846H         LINE#         25
+  -------         ENDPROC       _UART_TRANS
+  -------         PROC          DELAY
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         28
+  C:0800H         LINE#         30
+  C:081DH         LINE#         31
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  C:0867H         LINE#         32
+  C:0867H         LINE#         33
+  C:0867H         LINE#         34
+  C:086AH         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        UART_TRANSMITTER
+
+  -------         MODULE        ?C?SLCMP
+  C:081EH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 005CH BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=114
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
