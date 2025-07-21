@@ -1,0 +1,87 @@
+C51 COMPILER V9.60.7.0   UART_LED                                                          07/21/2025 07:19:53 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE UART_LED
+OBJECT MODULE PLACED IN .\Objects\UART_LED.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE UART_LED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -UART_LED.lst) TABS(2) OBJECT(.\Objects\UART_LED.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<stdio.h>
+   3          void uart_init(void);
+   4          void uart_string(char *str);
+   5          void uart_trans(char ch);
+   6          char uart_receive(void);
+   7          void delay(void);
+   8          sbit push_button = P3^3;
+   9          void uart_init(void)
+  10          {
+  11   1        SCON = 0x50;
+  12   1        TMOD = 0x20;
+  13   1        TH1 = 0xFD;
+  14   1        TR1 = 1;
+  15   1        PCON = 0x00;
+  16   1      }
+  17          void uart_string(char *str)
+  18          {
+  19   1        while(*str != '\0')
+  20   1        {
+  21   2          uart_trans(*str);
+  22   2          str++;
+  23   2        }
+  24   1      }
+  25          void uart_trans(char ch)
+  26          {
+  27   1        SBUF = ch;
+  28   1        while(TI == 0);
+  29   1        TI = 0;
+  30   1      }
+  31          char uart_receive(void)
+  32          { 
+  33   1        while(RI == 0);
+  34   1        RI = 0;
+  35   1        return SBUF;  
+  36   1      }
+  37          void delay(void)
+  38          {
+  39   1        unsigned int i, j;
+  40   1        for(i=0;i<4;i++)
+  41   1        {
+  42   2          for(j=0;j<65535;j++);
+  43   2        }
+  44   1      }
+  45          void main(void)
+  46          { 
+  47   1        unsigned int i;
+  48   1        unsigned char str[] = "SILICON";
+  49   1        unsigned char received;
+  50   1        uart_init();
+  51   1        for(i=0;str[i] != '\0';i++)
+  52   1        {
+  53   2          uart_trans(str[i]);
+  54   2          push_button = 0;
+C51 COMPILER V9.60.7.0   UART_LED                                                          07/21/2025 07:19:53 PAGE 2   
+
+  55   2          received = uart_receive();
+  56   2          P2 = received;
+  57   2          delay();
+  58   2          P2 = 0x00;
+  59   2        }
+  60   1        while(1);
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    178    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      16
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
