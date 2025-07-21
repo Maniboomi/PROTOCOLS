@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\UART-TRANSMITTER.obj" 
+TO ".\Objects\UART-TRANSMITTER" 
+PRINT(".\Listings\UART-TRANSMITTER.m51") RAMSIZE(256) 
