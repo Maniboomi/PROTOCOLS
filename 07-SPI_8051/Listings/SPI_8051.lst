@@ -1,0 +1,90 @@
+C51 COMPILER V9.60.7.0   SPI_8051                                                          07/21/2025 09:29:34 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SPI_8051
+OBJECT MODULE PLACED IN .\Objects\SPI_8051.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE SPI_8051.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -SPI_8051.lst) TABS(2) OBJECT(.\Objects\SPI_8051.obj)
+
+line level    source
+
+   1          #include<stdio.h>
+   2          #include<reg51.h>
+   3          #define MASTER P2
+   4          #define SLAVE P3
+   5          sbit CPOL = P1^0;
+   6          sbit CPHA = P1^1;
+   7          sbit SCLK = P1^2;
+   8          sbit CC = P1^3;
+   9          sbit L_MISO = P1^4;
+  10          sbit L_MOSI = P1^5;
+  11          void delay(void)
+  12          {
+  13   1        unsigned int k,g;
+  14   1        for(k=0;k<14;k++)
+  15   1        {
+  16   2          for(g=0;g<65535;g++);
+  17   2        }
+  18   1      }
+  19          void spi_init(void)
+  20          {
+  21   1        //MODE 1 
+  22   1        CPOL = 0;
+  23   1        CPHA = 1;
+  24   1        SCLK = 0;
+  25   1        CC = 1; //slave 1
+  26   1      }
+  27          void main(void)
+  28          {
+  29   1        unsigned char Mdata = 83;
+  30   1        unsigned char Sdata = 63;
+  31   1        unsigned char Adata;
+  32   1        unsigned int i;
+  33   1        unsigned int MOSI;
+  34   1        unsigned int MISO;
+  35   1        Adata = Sdata;
+  36   1        spi_init();
+  37   1        for(i=0;i<8;i++)
+  38   1          {
+  39   2            MOSI = (Mdata >> (7-i))&0x01;
+  40   2            delay();
+  41   2            SCLK = 1;
+  42   2            Sdata = (Sdata << 1) | (MOSI & 0x01);
+  43   2            delay();
+  44   2            SCLK = 0;
+  45   2            delay();
+  46   2          }
+  47   1          //MOSI = 1; // after getting the data from master to slave.
+  48   1          L_MOSI = 1;
+  49   1          MASTER = Sdata;
+  50   1          Sdata = Adata;
+  51   1          for(i=0;i<8;i++)
+  52   1          {
+  53   2            MISO = (Sdata >> (7-i))&0x01;
+  54   2            SCLK = 1;
+C51 COMPILER V9.60.7.0   SPI_8051                                                          07/21/2025 09:29:34 PAGE 2   
+
+  55   2            Mdata = (Mdata << 1) | (MISO & 0x01);
+  56   2            SCLK = 0;
+  57   2          }
+  58   1          //MISO = 1; //after getting the data from slave to master. 
+  59   1          L_MISO = 1;
+  60   1          SLAVE = Mdata;
+  61   1          while(1);
+  62   1      }
+  63              
+  64              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    205    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

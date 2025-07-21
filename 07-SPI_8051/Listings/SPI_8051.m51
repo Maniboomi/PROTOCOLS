@@ -1,0 +1,191 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/21/2025  09:29:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\SPI_8051.obj TO .\Objects\SPI_8051 PRINT (.\Listings\SPI_80
+>> 51.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\SPI_8051.obj (SPI_8051)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\SPI_8051 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0009H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0097H     UNIT         ?PR?MAIN?SPI_8051
+            CODE    0897H     002DH     UNIT         ?PR?DELAY?SPI_8051
+            CODE    08C4H     0016H     UNIT         ?C?LIB_CODE
+            CODE    08DAH     000CH     UNIT         ?C_C51STARTUP
+            CODE    08E6H     0009H     UNIT         ?PR?SPI_INIT?SPI_8051
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\SPI_8051 (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?SPI_8051
+
+?PR?MAIN?SPI_8051              0008H    0007H
+  +--> ?PR?SPI_INIT?SPI_8051
+  +--> ?PR?DELAY?SPI_8051
+
+?PR?DELAY?SPI_8051             000FH    0002H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\SPI_8051 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/21/2025  09:29:34  PAGE 2
+
+
+  -------         MODULE        ?C_STARTUP
+  C:08DAH         SEGMENT       ?C_C51STARTUP
+  I:0011H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08DDH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08DAH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08DAH         LINE#         133
+  C:08DCH         LINE#         134
+  C:08DDH         LINE#         135
+  C:08DEH         LINE#         136
+  C:08E0H         LINE#         185
+  C:08E3H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        SPI_8051
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:0090H.3       PUBLIC        CC
+  C:0897H         PUBLIC        delay
+  B:0090H.1       PUBLIC        CPHA
+  C:0800H         PUBLIC        main
+  B:0090H.2       PUBLIC        SCLK
+  B:0090H.0       PUBLIC        CPOL
+  C:08E6H         PUBLIC        spi_init
+  B:0090H.5       PUBLIC        L_MOSI
+  B:0090H.4       PUBLIC        L_MISO
+  -------         PROC          DELAY
+  -------         DO            
+  D:000FH         SYMBOL        k
+  D:0082H         SYMBOL        g
+  -------         ENDDO         
+  C:0897H         LINE#         11
+  C:0897H         LINE#         12
+  C:0897H         LINE#         14
+  C:089CH         LINE#         15
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/21/2025  09:29:34  PAGE 3
+
+
+  C:089CH         LINE#         16
+  C:08B5H         LINE#         17
+  C:08C3H         LINE#         18
+  -------         ENDPROC       DELAY
+  -------         PROC          SPI_INIT
+  C:08E6H         LINE#         19
+  C:08E6H         LINE#         20
+  C:08E6H         LINE#         22
+  C:08E8H         LINE#         23
+  C:08EAH         LINE#         24
+  C:08ECH         LINE#         25
+  C:08EEH         LINE#         26
+  -------         ENDPROC       SPI_INIT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        Mdata
+  D:0009H         SYMBOL        Sdata
+  D:000AH         SYMBOL        Adata
+  D:000BH         SYMBOL        i
+  D:000DH         SYMBOL        MOSI
+  D:0006H         SYMBOL        MISO
+  -------         ENDDO         
+  C:0800H         LINE#         27
+  C:0800H         LINE#         28
+  C:0800H         LINE#         29
+  C:0803H         LINE#         30
+  C:0806H         LINE#         35
+  C:0809H         LINE#         36
+  C:080CH         LINE#         37
+  C:0811H         LINE#         38
+  C:0811H         LINE#         39
+  C:0828H         LINE#         40
+  C:082BH         LINE#         41
+  C:082DH         LINE#         42
+  C:0839H         LINE#         43
+  C:083CH         LINE#         44
+  C:083EH         LINE#         45
+  C:0841H         LINE#         46
+  C:0852H         LINE#         48
+  C:0854H         LINE#         49
+  C:0857H         LINE#         50
+  C:085AH         LINE#         51
+  C:085FH         LINE#         52
+  C:085FH         LINE#         53
+  C:0874H         LINE#         54
+  C:0876H         LINE#         55
+  C:0880H         LINE#         56
+  C:0882H         LINE#         57
+  C:0890H         LINE#         59
+  C:0892H         LINE#         60
+  C:0895H         LINE#         61
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SPI_8051
+
+  -------         MODULE        ?C?SLCMP
+  C:08C4H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/21/2025  09:29:34  PAGE 4
+
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00DCH BYTE (10%) *
+******************************************************************************
+
+Program Size: data=18.0 xdata=0 code=242
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
